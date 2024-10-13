@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TechChallenge.Api</name>
+    </assembly>
+    <members>
+        <member name="T:TechChallenge.Api.Controllers.Shared.ApiControllerBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TechChallenge.Api.Controllers.Shared.CustomProblemDetails">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Controllers.Shared.CustomProblemDetails.Errors">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.Shared.CustomProblemDetails.#ctor(System.Net.HttpStatusCode,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="status"></param>
+            <param name="detail"></param>
+            <param name="errors"></param>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.Shared.CustomProblemDetails.#ctor(System.Net.HttpStatusCode,Microsoft.AspNetCore.Http.HttpRequest,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="status"></param>
+            <param name="request"></param>
+            <param name="detail"></param>
+            <param name="errors"></param>
+        </member>
+        <member name="T:TechChallenge.Api.Controllers.v1.ContatoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.#ctor(TechChallenge.Domain.Interfaces.Services.IContatoService,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{TechChallenge.Api.Controllers.v1.ContatoController})">
+            <summary>
+            
+            </summary>
+            <param name="contatoService"></param>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.CadastrarContato(TechChallenge.Domain.Entities.Requests.RegistrarContatoRequest)">
+            <summary>
+            Controle responsável por cadastrar novo contato
+            </summary>
+            <param name="contatoRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.RemoverContato(System.Int64)">
+            <summary>
+            Comando responsável por remover contato
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.AtualizarContato(TechChallenge.Domain.Entities.Requests.AtualizarContatoRequest)">
+            <summary>
+            Comando responsável em atualizar contato
+            </summary>
+            <param name="contatoRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.ObterTodosContatos">
+            <summary>
+            Comando responsável em obter todos contatos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.ContatoController.ObterContatoPorId(System.Int64)">
+            <summary>
+            Comando responsável por obter contato pelo id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TechChallenge.Api.Controllers.v1.DDDController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.DDDController.#ctor(TechChallenge.Domain.Interfaces.Services.IDDDService)">
+            <summary>
+            
+            </summary>
+            <param name="idDDService"></param>
+        </member>
+        <member name="M:TechChallenge.Api.Controllers.v1.DDDController.ObterTodosDDDs">
+            <summary>
+            Comando responsável em obter todos DDDs 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TechChallenge.Api.Extensions.ApiVersionSetupExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.ApiVersionSetupExtension.AddVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TechChallenge.Api.Extensions.LoggerSetupExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.LoggerSetupExtension.ResolveLog(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TechChallenge.Api.Extensions.ProblemSetupExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.ProblemSetupExtension.AddApiProblemDetails(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.ProblemSetupExtension.MapExceptionToStatusCodeWithMessage``1(Hellang.Middleware.ProblemDetails.ProblemDetailsOptions,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TException"></typeparam>
+            <param name="options"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="T:TechChallenge.Api.Extensions.SwaggerSetupExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.SwaggerSetupExtension.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.SwaggerSetupExtension.UseSwaggerUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:TechChallenge.Api.Options.IoC.DependencyInjection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Options.IoC.DependencyInjection.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TechChallenge.Api.Options.JwtOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Options.JwtOptions.Issuer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Options.JwtOptions.Audience">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Options.JwtOptions.SigningCredentials">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Options.JwtOptions.AccessTokenExpiration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TechChallenge.Api.Options.JwtOptions.RefreshTokenExpiration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TechChallenge.Api.Resources.ApiConstants">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CADASTRO_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.REMOVER_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.ATUALIZAR_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CONSULTAR_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.ERRO_CADASTRO_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.ERRO_REMOVER_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.ERRO_ATUALIZAR_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.ERRO_CONSULTAR_CONTATO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CONTATO_CONSULTADO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CONTATO_REMOVIDO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CONTATO_ATUALIZADO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TechChallenge.Api.Resources.ApiConstants.CONTATO_CADASTRADO">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>
