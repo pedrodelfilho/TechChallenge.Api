@@ -42,7 +42,7 @@ app.UseCors(builder => builder
 
 app.UseRouting();
 app.UseAuthorization();
-//app.UseMiddleware<LatencyMiddlewareExtension>();
+app.UseMiddleware<LatencyMiddlewareExtension>();
 app.UseMetricServer();
 app.UseHttpMetrics();
 
