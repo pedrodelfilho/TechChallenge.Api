@@ -34,7 +34,6 @@ app.UseProblemDetails();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.UseAuthorization();
 app.UseCors(builder => builder
     .SetIsOriginAllowed(origin => true)
     .AllowAnyMethod()
@@ -42,11 +41,13 @@ app.UseCors(builder => builder
     .AllowCredentials());
 
 app.UseRouting();
-
-app.MapControllers();
-
+app.UseAuthorization();
+app.UseMiddleware<LatencyMiddlewareExtension>();
 app.UseMetricServer();
 app.UseHttpMetrics();
-app.UseMiddleware<LatencyMiddlewareExtension>();
+
+// Registro de rotas em nível superior
+app.MapControllers();
+app.MapMetrics();
 
 app.Run();

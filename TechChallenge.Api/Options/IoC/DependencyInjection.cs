@@ -1,32 +1,29 @@
 ﻿using AutoMapper;
-using TechChallenge.Data.Context;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 using TechChallenge.Data.Repositories;
 using TechChallenge.Domain.Entities.Models;
 using TechChallenge.Domain.Entities.Requests;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Manager.Services;
-using Microsoft.EntityFrameworkCore;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Resources;
 
 namespace TechChallenge.Api.Options.IoC
 {
     /// <summary>
-    /// 
+    /// Classe para registro de dependências.
     /// </summary>
-    public static class DependencyInjection       
+    public static class DependencyInjection
     {
         /// <summary>
-        /// 
+        /// Método para registrar os serviços na injeção de dependência.
         /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        /// <returns></returns>
+        /// <param name="services">Coleção de serviços.</param>
+        /// <param name="configuration">Configuração da aplicação.</param>
+        /// <returns>Coleção de serviços atualizada.</returns>
         public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Prometheus
+            // Prometheus e OpenTelemetry
             services.AddOpenTelemetry()
             .WithMetrics(metrics =>
             {
@@ -38,18 +35,10 @@ namespace TechChallenge.Api.Options.IoC
                     .AddPrometheusExporter();
             });
 
-            // Connection strings
-            services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BdPadraoConnection")));
-
-            // JWT
-            var jwtOptions = configuration.GetSection("JwtOptions");
-
-            //Auto Mapper
-            var autoMapperConfig = new MapperConfiguration(cfg => { 
-                cfg.CreateMap<RegistrarContatoRequest, Contato>().ReverseMap(); 
-                cfg.CreateMap<AtualizarContatoRequest, Contato>().ReverseMap(); 
-            
+            // Auto Mapper
+            var autoMapperConfig = new MapperConfiguration(cfg => {
+                cfg.CreateMap<RegistrarContatoRequest, Contato>().ReverseMap();
+                cfg.CreateMap<AtualizarContatoRequest, Contato>().ReverseMap();
             });
             services.AddSingleton(autoMapperConfig.CreateMapper());
 
@@ -60,6 +49,7 @@ namespace TechChallenge.Api.Options.IoC
             // Services          
             services.AddScoped<IContatoService, ContatoService>();
             services.AddScoped<IDDDService, DDDService>();
+
             return services;
         }
     }
