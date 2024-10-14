@@ -9,6 +9,7 @@ using TechChallenge.Manager.Services;
 using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using OpenTelemetry.Resources;
 
 namespace TechChallenge.Api.Options.IoC
 {
@@ -31,7 +32,9 @@ namespace TechChallenge.Api.Options.IoC
             {
                 metrics
                     .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
                     .AddRuntimeInstrumentation()
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("techchallenge-api"))
                     .AddPrometheusExporter();
             });
 
