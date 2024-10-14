@@ -112,6 +112,24 @@
             <param name="services"></param>
             <returns></returns>
         </member>
+        <member name="T:TechChallenge.Api.Extensions.LatencyMiddlewareExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.LatencyMiddlewareExtension.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:TechChallenge.Api.Extensions.LatencyMiddlewareExtension.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
         <member name="T:TechChallenge.Api.Extensions.LoggerSetupExtension">
             <summary>
             

@@ -5,8 +5,13 @@ using TechChallenge.Api.Extensions;
 using TechChallenge.Api.Options.IoC;
 using TechChallenge.Data.Context;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddDbContext<DataContext>(options =>

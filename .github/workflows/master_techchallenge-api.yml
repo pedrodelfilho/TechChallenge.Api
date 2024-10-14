@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web Api - techchallenge-api
+name: Build, Test and Deploy ASP.Net Core app to Azure Web Api - techchallenge-api
 
 on:
   push:
@@ -23,6 +20,9 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+
+      - name: Run unit tests
+        run: dotnet test ${{ github.workspace }}/TechChallenge.Tests/TechChallenge.Tests.csproj --configuration Release --no-build --collect:"XPlat Code Coverage"
 
       - name: dotnet publish
         run: dotnet publish ${{ github.workspace }}/TechChallenge.Api/TechChallenge.Api.csproj -c Release -o ${{ github.workspace }}/myapp
@@ -60,6 +60,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'techchallenge-api'
-          slot-name: 'Production'        
-
-          
+          slot-name: 'Production'
