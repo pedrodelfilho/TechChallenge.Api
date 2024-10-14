@@ -1,8 +1,10 @@
 ﻿using Hellang.Middleware.ProblemDetails;
 using Microsoft.EntityFrameworkCore;
+using Prometheus;
 using TechChallenge.Api.Extensions;
 using TechChallenge.Api.Options.IoC;
 using TechChallenge.Data.Context;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,7 @@ builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 app.UseProblemDetails();
 app.UseSwaggerUI();
@@ -28,10 +31,17 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors(builder => builder
-    .SetIsOriginAllowed(orign => true)
+    .SetIsOriginAllowed(origin => true)
     .AllowAnyMethod()
     .AllowAnyHeader()
     .AllowCredentials());
+
+app.UseRouting();
+
 app.MapControllers();
+
+app.UseMetricServer();
+app.UseHttpMetrics();
+app.UseMiddleware<LatencyMiddlewareExtension>();
 
 app.Run();
