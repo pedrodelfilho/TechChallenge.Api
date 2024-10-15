@@ -7,6 +7,8 @@
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <DocumentationFile>$(OutputPath)TechChallenge.Api.xml</DocumentationFile>
   </PropertyGroup>
+	
+	
 
   <ItemGroup>
     <PackageReference Include="App.Metrics.AspNetCore" Version="4.3.0" />
