@@ -18,12 +18,13 @@ namespace TechChallenge.Api.Extensions
         {
             _next = next;
 
-            _latencyHistogram = Metrics.CreateHistogram("techchallenge-api", "Latência do endpoint",
+            _latencyHistogram = Metrics.CreateHistogram("techchallenge_api", "Latência do endpoint",
                 new HistogramConfiguration
                 {
                     Buckets = Histogram.ExponentialBuckets(start: 2, factor: 2, count: 10),
                     LabelNames = ["controller", "action", "status_code"]
                 });
+
         }
 
         /// <summary>

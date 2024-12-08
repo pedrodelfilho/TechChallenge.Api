@@ -114,7 +114,7 @@
         </member>
         <member name="T:TechChallenge.Api.Extensions.LatencyMiddlewareExtension">
             <summary>
-            
+            Middleware para medir a latência de requisições.
             </summary>
         </member>
         <member name="M:TechChallenge.Api.Extensions.LatencyMiddlewareExtension.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
@@ -183,16 +183,16 @@
         </member>
         <member name="T:TechChallenge.Api.Options.IoC.DependencyInjection">
             <summary>
-            
+            Classe para registro de dependências.
             </summary>
         </member>
         <member name="M:TechChallenge.Api.Options.IoC.DependencyInjection.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            
+            Método para registrar os serviços na injeção de dependência.
             </summary>
-            <param name="services"></param>
-            <param name="configuration"></param>
-            <returns></returns>
+            <param name="services">Coleção de serviços.</param>
+            <param name="configuration">Configuração da aplicação.</param>
+            <returns>Coleção de serviços atualizada.</returns>
         </member>
         <member name="T:TechChallenge.Api.Options.JwtOptions">
             <summary>
